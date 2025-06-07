@@ -40,3 +40,15 @@
 .read-the-docs {
   color: #888;
 }
+.product-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.product-item button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+}

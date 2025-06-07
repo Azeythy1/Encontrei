@@ -1,0 +1,210 @@
+/* Estilos Gerais do Painel Admin */
+.admin-panel {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Cabeçalho */
+.admin-header {
+  background: rgba(116, 78, 78, 0.7);
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  border: 1px solid #ff6700;
+  box-shadow: 0 4px 20px rgba(255, 103, 0, 0.2);
+}
+
+.admin-header h1 {
+  color: #0a0a0a;
+  margin: 0;
+  font-size: 2rem;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Abas de Navegação */
+.admin-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.admin-tabs button {
+  padding: 0.8rem 1.8rem;
+  border: none;
+  border-radius: 50px;
+  background: #333;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.admin-tabs button.active {
+  background: linear-gradient(135deg, #423c38 0%, #0a0a09 100%);
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 103, 0, 0.4);
+}
+
+/* Lista de Produtos */
+.product-list {
+  background: rgba(30, 30, 30, 0.8);
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid #333;
+  min-height: 300px;
+}
+
+.product-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 0.8rem;
+  background: rgba(50, 50, 50, 0.6);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  border-left: 3px solid #ff6700;
+}
+
+.product-item:hover {
+  background: rgba(70, 70, 70, 0.8);
+  transform: translateX(5px);
+}
+
+.product-item span {
+  font-size: 1.1rem;
+}
+
+/* Formulário */
+.product-form {
+  background: rgba(30, 30, 30, 0.9);
+  padding: 2rem;
+  border-radius: 10px;
+  border: 1px solid #ff6700;
+  box-shadow: 0 5px 25px rgba(255, 103, 0, 0.1);
+}
+
+.product-form h2 {
+  color: #2e2d2c;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #ff9d00;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  background: rgba(20, 20, 20, 0.8);
+  border: 1px solid #444;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #ff6700;
+  box-shadow: 0 0 0 2px rgba(255, 103, 0, 0.3);
+}
+
+/* Botões */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+button {
+  padding: 0.8rem 1.8rem;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.save-btn {
+  background: linear-gradient(135deg, #ff6700 0%, #ff9d00 100%);
+  color: #000;
+}
+
+.cancel-btn {
+  background: #333;
+  color: #fff;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Botão de Logout */
+.logout-btn {
+  display: block;
+  margin: 2rem auto 0;
+  padding: 0.8rem 2rem;
+  background: #ff0000;
+  color: white;
+  border-radius: 50px;
+  font-weight: bold;
+}
+
+/* Efeitos Especiais */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 103, 0, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(255, 103, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 103, 0, 0); }
+}
+
+.active-tab-indicator {
+  animation: pulse 2s infinite;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .admin-panel {
+    padding: 1rem;
+  }
+  
+  .admin-tabs {
+    flex-direction: column;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  button {
+    width: 100%;
+  }
+}

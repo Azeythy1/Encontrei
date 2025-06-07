@@ -1,13 +1,15 @@
 import { useContext } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import { AuthContext } from '../auth/AuthContext';
 
 export default function ProtectedRoute({ children }) {
   const { user } = useContext(AuthContext);
-
+  
+  // Se não tem usuário, redireciona para login
   if (!user) {
     return <Navigate to="/login" replace />;
   }
-
-  return children;
+  
+  // Se tem usuário, mostra o conteúdo
+  return children || <Outlet />;
 }

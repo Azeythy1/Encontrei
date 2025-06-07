@@ -9,10 +9,10 @@ export default function Login() {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (login(username, password)) {
-      navigate('/admin');
+    if (await login(username, password)) {
+      navigate('/admin'); // Redireciona para admin após login
     } else {
       setError('Credenciais inválidas');
     }
@@ -20,27 +20,23 @@ export default function Login() {
 
   return (
     <div className="login-container">
+      <h2>Login Administrativo</h2>
+      {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit}>
-        <h2>Login Administrativo</h2>
-        {error && <p className="error">{error}</p>}
-        <div>
-          <label>Usuário:</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Senha:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
+        <input
+          type="text"
+          placeholder="Usuário"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Senha"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
         <button type="submit">Entrar</button>
       </form>
     </div>

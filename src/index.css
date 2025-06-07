@@ -592,3 +592,49 @@ button:hover {
   margin: 1rem 0;
   gap: 10px;
 }
+/* Estilos para upload de imagem */
+.image-preview {
+  margin-top: 10px;
+  border: 1px dashed #ccc;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+input[type="file"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.category-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.category-filters button {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.category-filters button.active {
+  background: var(--xiaomi-orange);
+  color: white;
+  border-color: var(--xiaomi-orange);
+}
+.product-category {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--xiaomi-orange);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
