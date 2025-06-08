@@ -1,35 +1,44 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useCallback, useMemo } from 'react';
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [adminPassword, setAdminPassword] = useState('admin'); // Senha padrão inicial
+  const [adminPassword, setAdminPassword] = useState('admin');
 
-  const login = (username, password) => {
+  // useCallback para memoizar as funções e evitar recriações desnecessárias
+  const login = useCallback((username, password) => {
     if (username === 'admin' && password === adminPassword) {
-      setUser({ username });
-      return true;
+      const userData = { 
+        username,
+        isAdmin: true // Adicionei uma flag para identificar admins
+      };
+      setUser(userData);
+      return Promise.resolve(true); // Retornando uma Promise para simular async
     }
-    return false;
-  };
+    return Promise.reject(new Error('Credenciais inválidas'));
+  }, [adminPassword]);
 
-  const changePassword = (newPassword) => {
+  const changePassword = useCallback((newPassword) => {
     setAdminPassword(newPassword);
-    return true;
-  };
+    return Promise.resolve(true);
+  }, []);
 
-  const logout = () => {
+  const logout = useCallback(() => {
     setUser(null);
-  };
+  }, []);
+
+  // useMemo para otimizar o valor do contexto
+  const contextValue = useMemo(() => ({
+    user,
+    login,
+    logout,
+    changePassword,
+    isAuthenticated: !!user // Adicionei uma flag booleana para verificação simples
+  }), [user, login, logout, changePassword]);
 
   return (
-    <AuthContext.Provider value={{ 
-      user, 
-      login, 
-      logout,
-      changePassword 
-    }}>
+    <AuthContext.Provider value={contextValue}>
       {children}
     </AuthContext.Provider>
   );
