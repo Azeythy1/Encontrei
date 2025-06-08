@@ -1,0 +1,137 @@
+/* Estilos base do botão */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Tamanhos */
+.button--small {
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+.button--medium {
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.button--large {
+  padding: 12px 24px;
+  font-size: 16px;
+}
+
+/* Variantes */
+.button--primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.button--primary:hover {
+  background-color: #0069d9;
+}
+
+.button--secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.button--secondary:hover {
+  background-color: #5a6268;
+}
+
+.button--danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.button--danger:hover {
+  background-color: #c82333;
+}
+
+.button--success {
+  background-color: #28a745;
+  color: white;
+}
+
+.button--success:hover {
+  background-color: #218838;
+}
+
+.button--text {
+  background-color: transparent;
+  color: #007bff;
+}
+
+.button--text:hover {
+  text-decoration: underline;
+  background-color: rgba(0, 123, 255, 0.1);
+}
+
+/* Estados */
+.button--disabled,
+.button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.button--loading {
+  opacity: 0.8;
+  cursor: progress;
+}
+
+/* Ícones */
+.button__icon {
+  display: flex;
+  align-items: center;
+}
+
+.button__icon--left {
+  margin-right: 8px;
+}
+
+.button__icon--right {
+  margin-left: 8px;
+}
+
+/* Loader */
+.button__loader {
+  display: inline-flex;
+  margin-left: 8px;
+}
+
+.button__loader-dot {
+  width: 6px;
+  height: 6px;
+  margin: 0 2px;
+  background-color: currentColor;
+  border-radius: 50%;
+  opacity: 0;
+  animation: button-loader 1.4s infinite ease-in-out;
+}
+
+.button__loader-dot:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.button__loader-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.button__loader-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes button-loader {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}

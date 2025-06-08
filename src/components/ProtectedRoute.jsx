@@ -1,15 +1,15 @@
-import { useContext } from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
-import { AuthContext } from '../auth/AuthContext';
+import React, { useContext } from 'react';
+import { Navigate } from 'react-router-dom';
+import { AuthContext } from '../auth/AuthContext'; // Alterar importação
 
-export default function ProtectedRoute({ children }) {
-  const { user } = useContext(AuthContext);
+const ProtectedRoute = ({ children }) => {
+  const { user } = useContext(AuthContext); // Modificado para usar useContext
   
-  // Se não tem usuário, redireciona para login
   if (!user) {
     return <Navigate to="/login" replace />;
   }
-  
-  // Se tem usuário, mostra o conteúdo
-  return children || <Outlet />;
-}
+
+  return children;
+};
+
+export default ProtectedRoute;

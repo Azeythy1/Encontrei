@@ -1,5 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../auth/AuthContext';
+import Button from '../components/Button';
+import { FaHome, FaSignOutAlt, FaPlus, FaEdit, FaTrash } from 'react-icons/fa';
 import './AdminPanel.css';
 
 // Configuração dos campos por categoria
@@ -40,7 +42,19 @@ export default function AdminPanel() {
     image: '',
     specs: {}
   });
+// Adicione ao AdminPanel.jsx
+useEffect(() => {
+  const savedProducts = localStorage.getItem('products');
+  if (savedProducts) {
+    setProducts(JSON.parse(savedProducts));
+  }
+}, []);
 
+useEffect(() => {
+  if (products.length > 0) {
+    localStorage.setItem('products', JSON.stringify(products));
+  }
+}, [products]);
   // Carrega produtos (simulando API)
   useEffect(() => {
     // Substitua por sua lógica de carregamento real
@@ -273,6 +287,9 @@ export default function AdminPanel() {
       <button className="btn btn-secondary" onClick={logout} style={{ marginTop: '2rem' }}>
         Sair
       </button>
+      <Button to="/" className="home-button" icon={<FaHome />}>
+         Catálogo
+      </Button>
     </div>
   );
 }
