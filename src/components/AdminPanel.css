@@ -8,6 +8,19 @@
   --text-dark: #212529;
   --success: #28a745;
 }
+/* Abas de Navegação */
+
+
+/* Cabeçalho */
+.admin-header {
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px rgba(255, 103, 0, 0.2);
+  background: rgba(10, 26, 47, 0.8);
+  border-radius: 8px;
+  margin-bottom: 2rem;
+
+}
 
 .admin-panel {
   background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
@@ -15,15 +28,13 @@
   min-height: 100vh;
   padding: 2rem;
   font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
 }
-
-/* Header */
-.admin-header {
-  background: rgba(10, 26, 47, 0.8);
-  padding: 1.5rem;
-  border-radius: 8px;
+.admin-tabs {
+  display: flex;
+  gap: 1rem;
   margin-bottom: 2rem;
-  border-left: 4px solid var(--accent);
+  justify-content: center;
 }
 
 .admin-header h1 {
@@ -31,13 +42,6 @@
   margin: 0;
   text-align: center;
   font-weight: 500;
-}
-
-/* Tabs */
-.admin-tabs {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 2rem;
 }
 
 .admin-tabs button {
@@ -50,17 +54,21 @@
   cursor: pointer;
   transition: all 0.3s;
   border-bottom: 3px solid transparent;
+  text-transform: uppercase;
 }
 
 .admin-tabs button.active {
-  background: rgba(212, 175, 55, 0.2);
-  border-bottom-color: var(--accent);
-  color: var(--accent-light);
+  background: linear-gradient(135deg, #423c38 0%, #0a0a09 100%);
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 103, 0, 0.4);
 }
-
+.active-tab-indicator {
+  animation: pulse 2s infinite;
+} 
 /* Form Container */
 .form-container {
-  background: rgba(110, 38, 38, 0.87);
+   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
   border-radius: 10px;
   padding: 2rem;
@@ -129,6 +137,9 @@
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s;
+  max-width: 190px;
+  max-height: 32px;
+  
 }
 
 .btn-primary {

@@ -77,9 +77,24 @@ export default function AdminPanel() {
       specs: { ...prev.specs, [field]: value }
     }));
   };
+  const handleImageUpload = async (e) => {
+  const file = e.target.files[0];
+  if (file) {
+    // Simulando upload - na prática, use uma API
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      setFormData(prev => ({
+        ...prev,
+        image: event.target.result
+      }));
+    };
+    reader.readAsDataURL(file);
+  }
+};
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     
     // Validação
     const requiredFields = categoryFields[formData.category].required;
@@ -194,7 +209,7 @@ export default function AdminPanel() {
                 />
               </div>
 
-              <div className="form-group">
+               <div className="form-group">
                 <label>Modelo</label>
                 <input
                   type="text"
@@ -205,17 +220,23 @@ export default function AdminPanel() {
                 />
               </div>
 
-              <div className="form-group">
-                <label>URL da Imagem</label>
-                <input
-                  type="text"
-                  name="image"
-                  value={formData.image}
-                  onChange={handleInputChange}
-                  required
+               <div className="form-group">
+              <label>Imagem do Produto</label>
+               <input
+                type="file"
+                accept="image/*"
+                 onChange={handleImageUpload}
+              />
+                 {formData.image && (
+                <img 
+                 src={formData.image} 
+                 alt="Preview" 
+                 style={{ maxWidth: '100px', marginTop: '10px' }}
                 />
-              </div>
+                 )}
             </div>
+              
+          </div>
 
             <div className="form-section">
               <h3>Especificações Técnicas</h3>
